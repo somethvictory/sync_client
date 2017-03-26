@@ -27,6 +27,8 @@ cd sync_client
 ruby main.rb
 ```
 
+NOTE: Make sure that you have your [Rails web service](https://github.com/somethvictory/sync_assignment) running in your local machine on port 3000.
+
 ### Spec
 
 To run all specs in the project:
