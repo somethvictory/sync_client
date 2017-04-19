@@ -7,9 +7,6 @@ Note: This is a pure ruby app.
 ### Requirements
 
 * Ruby > 2.3.x
-* [Roo](https://github.com/roo-rb/roo) for parsing CSV.
-* [Pry](https://github.com/pry/pry) for debugging.
-* [Typhoeus](https://github.com/typhoeus/typhoeus) for sending data to the API.
 
 ### Setup
 
