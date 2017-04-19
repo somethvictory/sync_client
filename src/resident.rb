@@ -4,15 +4,21 @@ class Resident < Synchronizer
   attr_reader :id, :apartment, :external_id, :first_name, :last_name, :email, :phone_number
 
   def initialize(options)
+    external_id  = options[:external_id].to_s
+    first_name   = options[:first_name].to_s
+    last_name    = options[:last_name].to_s
+    email        = options[:email].to_s
+    phone_number = options[:phone_number].to_s
+
     @apartment    = options[:apartment]
-    @external_id  = options[:external_id].to_s.strip
-    @first_name   = options[:first_name].to_s.strip
-    @last_name    = options[:last_name].to_s.strip
-    @email        = options[:email].to_s.strip
-    @phone_number = options[:phone_number].to_s.strip
+    @external_id  = external_id.empty?  ? 'Unknown' : external_id
+    @first_name   = first_name.empty?   ? 'Unknown' : first_name
+    @last_name    = last_name.empty?    ? 'Unknown' : last_name
+    @email        = email.empty?        ? 'Unknown' : email
+    @phone_number = phone_number.empty? ? 'Unknown' : phone_number
   end
 
-  def uri
+  def url
     'http://localhost:3000/v1/people'
   end
 

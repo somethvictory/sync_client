@@ -7,7 +7,7 @@ class Floor < Synchronizer
     @number = number
   end
 
-  def uri
+  def url
     'http://localhost:3000/v1/buildings/1/floors'
   end
 

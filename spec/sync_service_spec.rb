@@ -11,6 +11,6 @@ describe SyncService do
   end
 
   xit 'syncs all related items' do
-    #Couldnot come up with a solution yet
+    #Could not come up with a solution yet
   end
 end

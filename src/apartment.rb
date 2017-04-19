@@ -9,7 +9,7 @@ class Apartment < Synchronizer
     @floor       = floor
   end
 
-  def uri
+  def url
     "http://localhost:3000/v1/floors/#{floor.id}/apartments"
   end
 

@@ -5,8 +5,8 @@ describe Apartment do
 
   subject { Apartment.new('123', @floor) }
 
-  it 'returns based url of the API end point, #uri' do
-    expect(subject.uri).to eq "http://localhost:3000/v1/floors/#{@floor.id}/apartments"
+  it 'returns based url of the API end point, #url' do
+    expect(subject.url).to eq "http://localhost:3000/v1/floors/#{@floor.id}/apartments"
   end
 
   it 'serializes the object attribute as a json, #as_json' do
@@ -19,10 +19,13 @@ describe Apartment do
     json    = { apartment: { external_id: subject.external_id }  }
 
     stub(:res)
+    stub(:request)
 
-    allow(Typhoeus).to receive(:post).with(subject.uri, headers: headers, body: json.to_json).and_return(res)
-    allow(res).to receive(:response_code).and_return(201)
-    allow(res).to receive(:body).and_return({'data' => {'id' => 2}}.to_json)
+    allow(res).to       receive(:request) {request}
+    allow(request).to   receive(:code).and_return('201')
+    allow(request).to   receive(:body).and_return({'data' => {'id' => 2}}.to_json)
+
+    allow(Net::HTTP).to receive(:new).and_return(res)
 
     expect {
       subject.sync
